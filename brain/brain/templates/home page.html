@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/js/bootstrap.min.js">
+    <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- 可选：自定义样式（如需进一步美化） -->
+    <style>
+        /* 示例自定义样式 */
+        .navbar-custom {
+            background-color: #e0f7fa;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem; /* 增加品牌/Logo 字体大小 */
+            margin-left: 1rem;
+        }
+        .navbar-nav {
+            margin-right: 2rem; /* 向左移动菜单项 */
+            gap: 3rem; /* 增大菜单项之间的间距 */
+        }
+        .nav-link {
+            color: #fff !important;
+            font-size: 1.2rem;
+            transition: color 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #f0ad4e !important;
+        }
+        /* 添加以下CSS代码到您的样式文件中 */
+
+        .scroll-text-container {
+            position: fixed; /* 或 absolute，根据实际情况选择 */
+            top: 45%; /* 或其他值，设置容器顶部位置 */
+            left: 55%; /* 或其他值，设置容器左侧位置 */
+            width: 90vw; /* 宽度覆盖整个屏幕宽度 */
+            height: 100vh;/* 高度覆盖整个屏幕高度*/
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .scroll-text {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollText 2s linear infinite; /* 调整动画名称、持续时间和速度曲线 */
+        }
+
+        @keyframes scrollText {
+        0% {
+            transform: translateX(calc(-50% + 500px));
+        }
+        100% {
+            transform: translateX(calc(100vw - 127%));
+        }
+        }
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            60% { /* 改为60%，让文字在距离边缘约40%时开始渐隐 */
+                opacity: 1;
+            }
+            100% {
+                opacity: 0; /* 文字到达边缘后立即变为完全透明 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top custom-class" style="background: #22272E; opacity: 0.9;">
+        <div class="container">
+            <!-- 品牌/Logo -->
+            <a class="navbar-brand" href="#" style="letter-spacing: 0.1em;">脑电波解码平台</a>
+
+            <!-- 手机视图下的导航按钮（触发展开菜单） -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 菜单链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="width: 100%;">
+                <div class="ms-auto"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">解码</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#author_">联系我们</a>
+                    </li>
+                </ul>
+                <!-- 登录按钮 -->
+                <div class="float-end me-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">登录</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录弹窗（Modal） -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-4 border-0 rounded-3 shadow-lg">
+                <div class="modal-header bg-white border-bottom-0 text-center">
+                    <h5 class="modal-title mb-0" id="loginModalLabel">欢迎登录</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 这里添加登录表单内容，例如用户名、密码输入框和提交按钮 -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="usernameInput" class="form-label">用户名</label>
+                            <input type="text" class="form-control form-control-lg" id="usernameInput" placeholder="请输入用户名">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">密码</label>
+                            <input type="password" class="form-control form-control-lg" id="passwordInput" placeholder="请输入密码">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMeCheckbox">
+                            <label class="form-check-label" for="rememberMeCheckbox">记住我</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 首页大背景图 -->
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col d-flex align-items-center justify-content-center">
+                <div class="bg bg-dark position-relative overflow-hidden">
+                    <canvas id="waveCanvasleft" width="600" height="200" class="position-absolute h-auto" style="z-index: 1; width: 45%; top: 35%; left: 0%;"></canvas>
+                    <!-- <canvas id="waveCanvasright" width="600" height="200" class="position-absolute h-auto" style="z-index: 1; width: 45%; top: 35%; left: 55%;"></canvas> -->
+                    <img src="../images/universe_bg.png" alt="" class="img-fluid object-fit-cover" style="height: 100vh; width: 100vw;">
+                    <!-- <img src="images/links.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 65.751%; top: 19.326%; left: 23.545%;"> -->
+                    <img src="../images/logo1.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 45%; top: 29%; left: 36%;">
+                    <img src="../images/1.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 19%; left: 37%;">
+                    <img src="../images/2.png" alt=""class="position-absolute w-auto" style="z-index: 1; height: 35%; top: 59%; left: 32%;">
+                    <img src="../images/3.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 69%; left: 67%;">
+                    <img src="../images/2.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 8%; left: 76%;">
+                    <img src="../images/4.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 33%; left: 58%;">
+                    <img src="../images/5.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 22%; left: 14%;">
+                    <img src="../images/3.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 69%; left: 27%;">
+                    <img src="../images/2.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 8%; left: 36%;">
+                    <img src="../images/4.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 43%; left: 58%;">
+                    <img src="../images/5.png" alt="" class="position-absolute w-auto" style="z-index: 1; height: 25%; top: 62%; left: 14%;">
+                </div>
+                <!-- 在原有代码中插入以下部分 -->
+                <div class="scroll-text-container position-absolute start-50 translate-middle-x end-0 bottom-5 text-white" style="background: transparent;">
+                    <div class="scroll-text fadeOut">
+                    这里是您的滚动文字内容，您可以编辑此文本...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const waveCanvasleft = document.getElementById('waveCanvasleft');
+        const waveCanvasright = document.getElementById('waveCanvasright');
+        draw(waveCanvasleft);
+        draw(waveCanvasright);
+        function draw(canvas){
+            const ctx = canvas.getContext('2d');
+
+        // 波浪线参数
+        const waveWidth = canvas.width * 0.5; // 增加波浪总宽度以实现更密集的波形
+        let waveHeight = 30; // 初始波峰高度
+        const waveSpeed = 6; // 加快滚动速度（像素/帧）
+        const waveColor = '#52BBB1'; // 设置波浪线颜色为蓝色
+
+        let waveOffset = 0; // 当前波浪偏移量
+        const minHeightChangeRate = -1.3; // 最小高度变化速率（每帧增加的高度，可以为负值以实现下降）
+        const maxHeightChangeRate = 1.3; // 最大高度变化速率（每帧增加的高度）
+        const minWaveHeight = 10; // 最小允许的波峰高度
+
+        let heightChangeRate = 0; // 当前高度变化速率
+        let heightChangeDecayRate = 0.05; // 高度变化速率衰减系数
+        const heightChangeTargetRange = [minHeightChangeRate, maxHeightChangeRate]; // 目标高度变化速率范围
+
+        function updateWaveHeight() {
+            // 衰减当前高度变化速率
+            heightChangeRate *= (1 - heightChangeDecayRate);
+
+            // 如果高度变化速率已接近零，则重新随机生成一个新的速率
+            if (Math.abs(heightChangeRate) < 0.01) {
+                heightChangeRate = Math.random() * (maxHeightChangeRate - minHeightChangeRate) + minHeightChangeRate;
+            }
+            
+            // 定义最大波峰高度
+            const maxWaveHeight = 90; // 例如设置最大波峰高度为90像素
+
+            // 更新波峰高度，确保不超过最大值且不低于最小值
+            waveHeight = Math.min(maxWaveHeight, Math.max(minWaveHeight, waveHeight + heightChangeRate));   
+        }
+
+        function drawWave() {
+            // 更新波峰高度
+            updateWaveHeight();
+            // 清除画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 设置线条颜色
+            ctx.strokeStyle = waveColor;
+            ctx.lineWidth=7;
+            // 绘制波浪线
+            ctx.beginPath();
+            for (let x = 0; x < canvas.width; x++) {
+                const y = Math.sin((x + waveOffset) / waveWidth * 2 * Math.PI) * waveHeight + canvas.height / 2;
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke(); // 仅绘制线条
+
+            // 更新波浪偏移量
+            waveOffset += waveSpeed;
+
+            // 当波浪移动到尽头时，将其移回初始位置
+            if (waveOffset > waveWidth) {
+                waveOffset %= waveWidth;
+            }
+
+            // 请求下一帧动画
+            requestAnimationFrame(drawWave);
+        }
+
+        // 启动动画
+        drawWave();
+        }
+    </script>
+    <!-- 下面效果展示 -->
+    <!-- Section: features -->
+    <div class="bg-white text-dark py-5">
+        <div class="container">
+            <div class="d-flex align-items-center row">
+                <!-- 动画图解 -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em" viewBox="0 0 640 512" class="mr-3">
+                            <path fill="var(--md-primary-bg-color)" 
+                            d="M256 0H576c35.3 0 64 28.7 64 64V288c0 35.3-28.7 64-64 64H256c-35.3 0-64-28.7-64-64V64c0-35.3 28.7-64 64-64zM476 106.7C471.5 100 464 96 456 96s-15.5 4-20 10.7l-56 84L362.7 169c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h80 48H552c8.9 0 17-4.9 21.2-12.7s3.7-17.3-1.2-24.6l-96-144zM336 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM64 128h96V384v32c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V384H512v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192c0-35.3 28.7-64 64-64zm8 64c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16H88c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H72zm0 104c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16H88c8.8 0 16-7.2 16-16V312c0-8.8-7.2-16-16-16H72zm0 104c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16H88c8.8 0 16-7.2 16-16V416c0-8.8-7.2-16-16-16H72zm336 16v16c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V416c0-8.8-7.2-16-16-16H424c-8.8 0-16 7.2-16 16z"/>
+                        </svg>
+                        <h3 class="mb-0">动画图解</h3>
+                    </div>
+                    <p class="text-muted">内容清晰易懂，学习曲线平滑</p>
+                    <p class="lead">“A picture is worth a thousand words.”<br>“一图胜千言”</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/animation.gif" alt="Animation example" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+
+            <!-- 一键运行 -->
+            <div class="d-flex align-items-center row">
+                <div class="col-lg-6 order-1">
+                    <img src="../images/running_code.gif" alt="Running code example" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6 order-2 ml-lg-4" style="padding-left: 10rem;">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em" viewBox="0 0 640 512" class="mr-3">
+                            <path fill="var(--md-primary-bg-color)" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/>
+                        </svg>
+                        <h3 class="mb-0">一键运行</h3>
+                    </div>
+                    <p class="text-muted">十余种编程语言，代码可视化运行</p>
+                    <p class="lead">“Talk is cheap. Show me the code.”<br>“少吹牛，看代码”</p>
+                </div>
+            </div>
+
+
+            <!-- 互助学习 -->
+            <div class="d-flex align-items-center row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" width="1.5em" viewBox="0 0 640 512" class="mr-3">
+                            <path fill="var(--md-primary-bg-color)" d="M88.2 309.1c9.8-18.3 6.8-40.8-7.5-55.8C59.4 230.9 48 204 48 176c0-63.5 63.8-128 160-128s160 64.5 160 128s-63.8 128-160 128c-13.1 0-25.8-1.3-37.8-3.6c-10.4-2-21.2-.6-30.7 4.2c-4.1 2.1-8.3 4.1-12.6 6c-16 7.2-32.9 13.5-49.9 18c2.8-4.6 5.4-9.1 7.9-13.6c1.1-1.9 2.2-3.9 3.2-5.9zM0 176c0 41.8 17.2 80.1 45.9 110.3c-.9 1.7-1.9 3.5-2.8 5.1c-10.3 18.4-22.3 36.5-36.6 52.1c-6.6 7-8.3 17.2-4.6 25.9C5.8 378.3 14.4 384 24 384c43 0 86.5-13.3 122.7-29.7c4.8-2.2 9.6-4.5 14.2-6.8c15.1 3 30.9 4.5 47.1 4.5c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176zM432 480c16.2 0 31.9-1.6 47.1-4.5c4.6 2.3 9.4 4.6 14.2 6.8C529.5 498.7 573 512 616 512c9.6 0 18.2-5.7 22-14.5c3.8-8.8 2-19-4.6-25.9c-14.2-15.6-26.2-33.7-36.6-52.1c-.9-1.7-1.9-3.4-2.8-5.1C622.8 384.1 640 345.8 640 304c0-94.4-87.9-171.5-198.2-175.8c4.1 15.2 6.2 31.2 6.2 47.8l0 .6c87.2 6.7 144 67.5 144 127.4c0 28-11.4 54.9-32.7 77.2c-14.3 15-17.3 37.6-7.5 55.8c1.1 2 2.2 4 3.2 5.9c2.5 4.5 5.2 9 7.9 13.6c-17-4.5-33.9-10.7-49.9-18c-4.3-1.9-8.5-3.9-12.6-6c-9.5-4.8-20.3-6.2-30.7-4.2c-12.1 2.4-24.7 3.6-37.8 3.6c-61.7 0-110-26.5-136.8-62.3c-16 5.4-32.8 9.4-50 11.8C279 439.8 350 480 432 480z"/>
+                        </svg>
+                        <h3 class="mb-0">互助学习</h3>
+                    </div>
+                    <p class="text-muted">欢迎讨论与提问，读者间携手共进</p>
+                    <p class="lead">“Learning by teaching.”<br>“教学相长”</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/comment.gif" alt="Comments example" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 作者 -->
+    <div id="author_" class="container bg-dark" style="width: 100%;">
+        <div class="row py-5">
+        <div class="col text-center">
+            <h2 style="color: #ADBAC7;">作者</h2>
+        </div>
+        </div>
+        <div class="row gy-4 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" style="max-width: 200px; height: auto;">
+            <div class="card shadow-sm align-items-center">
+                <img class="card-img-top profile-img" src="../images/头像/刘梓贤.jpg" alt="Reviewer: codingonion" >
+                <div class="card-body">
+                <h5 class="card-title"><b>刘梓贤</b></h5>
+                <p class="card-text"><small class="text-muted">项目负责人</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4" style="max-width: 200px; height: auto;">
+            <div class="card shadow-sm align-items-center">
+                <img class="card-img-top profile-img" src="../images/头像/龙嘉伟.jpg" alt="Reviewer: Gonglja">
+                <div class="card-body">
+                <h5 class="card-title"><b>龙嘉伟</b></h5>
+                <p class="card-text"><small class="text-muted">后端开发</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4" style="max-width: 200px; height: auto;">
+            <div class="card shadow-sm text-center">
+                <img class="card-img-top profile-img" src="../images/头像/肖迎春.jpg" alt="Reviewer: gvenusleo">
+                <div class="card-body">
+                <h5 class="card-title"><b>肖迎春</b></h5>
+                <p class="card-text"><small class="text-muted">前端开发</small></p>
+                </div>
+            </div>
+        </div>
+        <!-- ... 更多审阅者卡片 ... -->
+    
+        <!-- ... 最后一个审阅者 ... -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4" style="max-width: 200px; height: auto;">
+            <div class="card shadow-sm align-items-center">
+                <img class="card-img-top profile-img" src="../images/头像/姜高峰.jpg" alt="Reviewer: Reanon">
+                <div class="card-body">
+                <h5 class="card-title"><b>姜高峰</b></h5>
+                <p class="card-text"><small class="text-muted">后端开发</small></p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

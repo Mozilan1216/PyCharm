@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEG信息上传界面</title>
+  <!-- 引入Bootstrap CSS -->
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/navigation bar.css">
+  <style>
+    /* 自定义样式 */
+    html, body {
+        height: 100%;
+        margin: 0;
+        margin-top: 30px; /* 设置页面顶部间距为 50px */
+        overflow: hidden;
+    }
+    .bg-cover {
+        background-image: url('../static/img/background_frame.png'); /* 使用你提供的背景图片路径 */
+        background-size: 75%; /* 将背景图片缩小为原始大小的一半 */
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 40px ; /* 设置 padding，分别为上下左右 */
+        height: calc(100vh - 50px); /* 设置高度为视口高度减去上下两倍 padding */
+    }
+    .upload-container {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      height: 100%;
+    }
+    .eeg-upload {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 500px;
+      margin-left: 15%; /* 左侧留白 */
+    }
+    .icon-btn {
+      background-color: #fff;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      margin-right: 5px; /* 与文字之间的间隔 */
+    }
+    .icon-btn img {
+      width: 50%;
+      height: auto;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0;
+      margin-top: 10px; /* 与上方元素的间隔 */
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    .text-with-icon {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* 每个元素之间的间隔 */
+    }
+  </style>
+</head>
+<body style="height: 800px;">
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top custom-class>
+        <div class="container">
+            <!-- 品牌/Logo -->
+            <a class="navbar-brand" href="#">解码大脑语言之美</a>
+
+            <!-- 手机视图下的导航按钮（触发展开菜单） -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 菜单链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ms-auto"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">解码</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系我们</a>
+                    </li>
+                </ul>
+                <!-- 登录按钮 -->
+                <div class="float-end me-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">登录</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录弹窗（Modal） -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-4 border-0 rounded-3 shadow-lg">
+                <div class="modal-header bg-white border-bottom-0 text-center">
+                    <h5 class="modal-title mb-0" id="loginModalLabel">欢迎登录</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 这里添加登录表单内容，例如用户名、密码输入框和提交按钮 -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="usernameInput" class="form-label">用户名</label>
+                            <input type="text" class="form-control form-control-lg" id="usernameInput" placeholder="请输入用户名">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">密码</label>
+                            <input type="password" class="form-control form-control-lg" id="passwordInput" placeholder="请输入密码">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMeCheckbox">
+                            <label class="form-check-label" for="rememberMeCheckbox">记住我</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 引入 Bootstrap JavaScript（必需放置在 body 结尾前） -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- 上传脑电信息 -->
+    <div class="bg-cover">
+    <div class="upload-container">
+        <div class="eeg-upload text-center">
+            <h3>请上传您的脑电波信息</h3>
+            <p>Please upload your EEG information</p>
+            <!-- 修改为使用input type="file"实现文件选择 -->
+            <div class="text-with-icon">
+                <label for="file-upload">
+                    <button class="icon-btn">
+                        <img src="../static/img/upload.png" alt="上传"/>
+                    </button>
+                </label>
+                <input id="file-upload" type="file" style="display: none;" accept=".eeg, .csv, .txt" />
+                <p>上传脑电波信息文件</p>
+            </div>
+            <!-- 修改为使用JavaScript函数实现设备连接 -->
+            <div class="text-with-icon">
+                <button id="connect-btn" class="icon-btn">
+                    <img src="../static/img/connect.png" alt="帮助"/>
+                </button>
+                <p>连接在线设备</p>
+            </div>
+            <button id="submit-btn" class="submit-btn">提交</button>
+        </div>
+    </div>
+    </div>
+
+  <!-- 引入Bootstrap JS 和依赖 -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../static/js/application.js"></script>
+</body>
+</html>

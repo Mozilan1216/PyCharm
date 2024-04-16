@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEG信息上传界面</title>
+  <!-- 引入Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* 自定义样式 */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .bg-cover {
+      background-image: url('../static/img/background_frame.png'); /* 使用你提供的背景图片路径 */
+        background-size: 75%; /* 将背景图片缩小为原始大小的一半 */
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 20px ; /* 设置 padding，分别为上下左右 */
+        height: calc(100vh - 50px); /* 设置高度为视口高度减去上下两倍 padding */
+    }
+    .upload-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .eeg-upload {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+    }
+    .icon-btn {
+      background-color: #fff;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      margin-bottom: 10px;
+    }
+    .icon-btn img {
+      width: 50%;
+      height: auto;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-cover">
+    <div class="upload-container">
+      <div class="eeg-upload text-center">
+        <h3>请上传您的脑电波信息</h3>
+        <p>Please upload your EEG information</p>
+        <button class="icon-btn">
+          <img src="../static/img/upload.png" alt="上传"/>
+        </button>
+        <p>上传脑电波信息文件</p>
+        <button class="icon-btn">
+          <img src="../static/img/connect.png" alt="帮助"/>
+        </button>
+        <p>连接在线支持</p>
+        <button class="submit-btn">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入Bootstrap JS 和依赖 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

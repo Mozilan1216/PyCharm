@@ -1,0 +1,91 @@
+body {
+    background-color: #f0f7fa;
+    overflow-x: hidden; /* 禁止水平滚动 */
+}
+
+.container {
+    padding-top: 100px;
+}
+
+.form-group {
+    margin-bottom: 50px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+.form-group button:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group button img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.form-group button span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.form-group button img {
+    width: 20px;
+    height: 20px;
+}
+
+.form-group button span {
+    margin-left: 10px;
+}
+
+.form-group button img + span {
+    margin-left: 0;
+}
+
+body {
+    background-color: #f0f2f5;
+    padding-top: 40px;
+}
+
+.container {
+    padding-top: 40px;
+    /*padding-bottom: 50px;*/
+}
+
+.analysis {
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    /* 使用大海的渐变色作为背景 */
+    background: linear-gradient(135deg, #0077b6, #83c5be);
+    color: #fff; /* Text color */
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.row {
+    margin-bottom: 30px;
+    align-items: center; /* Vertical alignment */
+}
+
+.custom-row{
+    margain-bottom: 40px;/* 自定义列之间的间距 */
+}
+

@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    margin-top: 30px; /* 设置页面顶部间距为 50px */
+    overflow: hidden;
+}
+.bg-cover {
+    background-image: url('../static/img/background_frame.png'); /* 使用你提供的背景图片路径 */
+    background-size: 75%; /* 将背景图片缩小为原始大小的一半 */
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 40px ; /* 设置 padding，分别为上下左右 */
+    height: calc(100vh - 50px); /* 设置高度为视口高度减去上下两倍 padding */
+}
+.upload-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+}
+.eeg-upload {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    margin-left: 10%; /* 左侧留白 */
+}
+.icon-btn {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-right: 5px; /* 与文字之间的间隔 */
+}
+.icon-btn img {
+    width: 50%;
+    height: auto;
+}
+.submit-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-top: 10px; /* 与上方元素的间隔 */
+}
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+.text-with-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* 每个元素之间的间隔 */
+}

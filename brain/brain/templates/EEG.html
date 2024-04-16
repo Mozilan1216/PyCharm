@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Rolling Sine Wave</title>
+</head>
+<body>
+    <canvas id="waveCanvas" width="600" height="200"></canvas>
+
+<script>
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 波浪线参数
+    const waveWidth = canvas.width * 0.5; // 增加波浪总宽度以实现更密集的波形
+    let waveHeight = 30; // 初始波峰高度
+    const waveSpeed = 6; // 加快滚动速度（像素/帧）
+    const waveColor = '#0000FF'; // 设置波浪线颜色为蓝色
+
+    let waveOffset = 0; // 当前波浪偏移量
+    const minHeightChangeRate = -1.3; // 最小高度变化速率（每帧增加的高度，可以为负值以实现下降）
+    const maxHeightChangeRate = 1.3; // 最大高度变化速率（每帧增加的高度）
+    const minWaveHeight = 10; // 最小允许的波峰高度
+
+    let heightChangeRate = 0; // 当前高度变化速率
+    let heightChangeDecayRate = 0.05; // 高度变化速率衰减系数
+    const heightChangeTargetRange = [minHeightChangeRate, maxHeightChangeRate]; // 目标高度变化速率范围
+
+    function updateWaveHeight() {
+        // 衰减当前高度变化速率
+        heightChangeRate *= (1 - heightChangeDecayRate);
+
+        // 如果高度变化速率已接近零，则重新随机生成一个新的速率
+        if (Math.abs(heightChangeRate) < 0.01) {
+            heightChangeRate = Math.random() * (maxHeightChangeRate - minHeightChangeRate) + minHeightChangeRate;
+        }
+
+        // 更新波峰高度，确保不小于最小值
+        waveHeight = Math.max(minWaveHeight, waveHeight + heightChangeRate);
+    }
+
+    function drawWave() {
+        // 更新波峰高度
+        updateWaveHeight();
+        // 清除画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 设置线条颜色
+        ctx.strokeStyle = waveColor;
+
+        // 绘制波浪线
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x++) {
+            const y = Math.sin((x + waveOffset) / waveWidth * 2 * Math.PI) * waveHeight + canvas.height / 2;
+            ctx.lineTo(x, y);
+        }
+        ctx.stroke(); // 仅绘制线条
+
+        // 更新波浪偏移量
+        waveOffset += waveSpeed;
+
+        // 当波浪移动到尽头时，将其移回初始位置
+        if (waveOffset > waveWidth) {
+            waveOffset %= waveWidth;
+        }
+
+        // 请求下一帧动画
+        requestAnimationFrame(drawWave);
+    }
+
+    // 启动动画
+    drawWave();
+</script>
+</body>
+</html>

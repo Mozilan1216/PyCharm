@@ -1,0 +1,80 @@
+img {
+    border: none;
+}
+
+#backendText {
+    font-size: inherit; /* 继承父元素的文字大小 */
+}
+
+.custom-box {
+    background: linear-gradient(to bottom right, #accfed, #a7cde2);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 16px; /* 设置文字大小 */
+    text-align: left; /* 设置对齐方式 */
+}
+
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    opacity: 0.8;
+}
+
+body {
+    background-color: #f0f7fa;
+}
+
+.container {
+    padding-top: 100px;
+}
+
+.form-group {
+    margin-bottom: 50px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+.form-group button:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group button img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.form-group button span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.form-group button img {
+    width: 20px;
+    height: 20px;
+}
+
+.form-group button span {
+    margin-left: 10px;
+}
+
+.form-group button img + span {
+    margin-left: 0;
+}

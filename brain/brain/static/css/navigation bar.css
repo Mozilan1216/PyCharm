@@ -1,0 +1,22 @@
+.navbar-custom {
+    background-color: #e0f7fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    color: #000 !important;
+    font-size: 1.5rem; /* 增加品牌/Logo 字体大小 */
+    margin-left: 1rem;
+}
+.navbar-nav {
+    margin-right: 2rem; /* 向左移动菜单项 */
+    gap: 3rem; /* 增大菜单项之间的间距 */
+}
+.nav-link {
+    color: #000 !important;
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out;
+}
+.nav-link:hover {
+    color: #f0ad4e !important;
+}
+
